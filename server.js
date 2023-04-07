@@ -2,7 +2,7 @@ const { createServer } = require("http");
 const { appendFile, readFile, createReadStream, read } = require("fs");
 const path = require("path");
 const { EventEmitter } = require("events");
-const PORT = 5002;
+const PORT = 5001;
 
 const NewsLetter = new EventEmitter();
 
@@ -51,7 +51,7 @@ server.listen(PORT, () => console.log(`Server listening at ${PORT}`));
 
 NewsLetter.on("signup", (newSub, res) => {
     appendFile(
-        path(__dirname, "./assets/subs.csv"),
+        path.join(__dirname, "./assets/subs.csv"),
         newSub,
         (err) => {
             if (err){
